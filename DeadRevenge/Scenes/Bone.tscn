@@ -49,3 +49,11 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/going = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0, 4.17233e-07 )
+scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_editor_description_": "Node responsável por emitir o sinal que destrói o osso quando ele sai da tela"
+}
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
