@@ -11,3 +11,9 @@ func _process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+func _on_Bone_area_entered(area):
+	if "enemy" in area.get_groups():
+		area.kill()
+		# play sound
+		queue_free()

@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 const GRAVITY = 20
 const UP = Vector2(0, -1)
-const JUMP_FORCE = 350
+const JUMP_FORCE = 300
 
 export (PackedScene) var bone
 onready var anim_player = $AnimationPlayer
@@ -16,17 +16,25 @@ func _ready():
 
 func _physics_process(delta):
 	motion.y += GRAVITY
-	if Input.is_action_just_pressed("jump"):
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		jump()
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
-	motion = move_and_slide(motion)
-	
+	motion = move_and_slide(motion, UP)
+
 func jump():
 	motion.y -= JUMP_FORCE
 
 func shoot():
 	anim_player.play("attacking")
+
+func take_damage():
+	Global.lives -= 1
+	if Global.lives <= 0:
+		die()
+
+func die():
+	pass
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "attacking":

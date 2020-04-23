@@ -3,6 +3,9 @@ extends Control
 signal jump
 signal shoot
 
+func _ready():
+	show()
+
 func _on_JumpButton_pressed():
 	emit_signal("jump")
 

@@ -56,4 +56,5 @@ scale = Vector2( 0.8, 0.8 )
 __meta__ = {
 "_editor_description_": "Node responsável por emitir o sinal que destrói o osso quando ele sai da tela"
 }
+[connection signal="area_entered" from="." to="." method="_on_Bone_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
