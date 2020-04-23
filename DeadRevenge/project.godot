@@ -8,15 +8,24 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BasicRunner",
+"language": "GDScript",
+"path": "res://Scripts/BasicRunner.gd"
+} ]
 _global_script_class_icons={
-
+"BasicRunner": ""
 }
 
 [application]
 
 config/name="DeadRevenge"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
 
 [display]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/tiles.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/background.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/ParallaxBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -194,15 +194,6 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [node name="Tests" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 512.0
-margin_bottom = 432.0
-texture = ExtResource( 2 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 7 )
 cell_size = Vector2( 16, 16 )
@@ -211,3 +202,5 @@ tile_data = PoolIntArray( 851968, 0, 0, 851969, 1, 0, 851970, 1, 0, 851971, 1, 0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 48, 192 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
