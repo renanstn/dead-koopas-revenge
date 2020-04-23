@@ -8,6 +8,16 @@ Um pequeno endless runner 2D, feito com sprites prontos do jogo Super Mario Worl
 
 Em desenvolvimento
 
+## Este projeto envolve:
+
+- Fundo parallax
+- Spawn aleatório de inimigos
+- Background/chão infinito
+- Plataformas *one-way-collision*
+- Detecção de pulo sobre um inimigo
+- Efeito de "montar" em um inimigo
+- Comunicação com API externa (para salvar os records dos jogadores)
+
 # Screenshots
 
 ![001](https://github.com/Doc-McCoy/godot-dead-revenge/blob/master/Screenshots/001.PNG)
