@@ -70,6 +70,7 @@ position = Vector2( 8, 0 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = false
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="jump" from="CanvasLayer/HUD" to="." method="_on_HUD_jump"]
 [connection signal="shoot" from="CanvasLayer/HUD" to="." method="_on_HUD_shoot"]

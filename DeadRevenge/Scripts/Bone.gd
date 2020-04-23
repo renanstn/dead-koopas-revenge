@@ -1,6 +1,6 @@
 extends Area2D
 
-const VELOCITY = 200
+const VELOCITY = 150
 onready var anim_player = $AnimationPlayer
 
 func _ready():
