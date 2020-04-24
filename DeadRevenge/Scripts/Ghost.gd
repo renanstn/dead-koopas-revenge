@@ -7,13 +7,13 @@ enum GHOST_ACT {
 }
 export (GHOST_ACT) var type
 onready var anim_player = $AnimationPlayer
-onready var tween = $Tween
 var SPEED = Global.parallax_speed
 
 func _ready():
 	anim_player.play("flying")
 
 func _process(delta):
+	
 	var motion = Vector2(-SPEED, 0)
 	position += motion * delta
 	if type == GHOST_ACT.moving:
@@ -32,3 +32,15 @@ func _process(delta):
 func kill():
 	Global.score += 1
 	queue_free()
+
+func _on_GhostA_body_entered(body):
+	if body.name == "Player":
+		body.take_damage()
+
+func _on_GhostB_body_entered(body):
+	if body.name == "Player":
+		body.take_damage()
+
+func _on_GhostC_body_entered(body):
+	if body.name == "Player":
+		body.take_damage()
