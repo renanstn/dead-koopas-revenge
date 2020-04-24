@@ -44,3 +44,6 @@ func _on_GhostB_body_entered(body):
 func _on_GhostC_body_entered(body):
 	if body.name == "Player":
 		body.take_damage()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
