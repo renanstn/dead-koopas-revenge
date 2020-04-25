@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 const GRAVITY = 20
+const FLY_POWER = 10
+const V_SPEED_LIMIT = 80
 const UP = Vector2(0, -1)
 const JUMP_FORCE = 300
 
@@ -9,17 +11,26 @@ onready var anim_player = $AnimationPlayer
 onready var anim_effects = $AnimationEffects
 onready var bone_spawn = $BoneSpawnPoint
 var motion : Vector2 = Vector2()
-var can_flu : bool = false
+var sprite_mount : Sprite
 var can_hit : bool = true
 var mounted : bool
 
 func _ready():
 	anim_player.play("walking")
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
-	motion.y += GRAVITY
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		jump()
+	if mounted:
+#		if Input.is_action_pressed("jump"):
+		if Input.is_action_just_pressed("jump"):
+			motion.y -= 400# FLY_POWER
+#			motion.y = clamp(motion.y, -V_SPEED_LIMIT, -FLY_POWER)
+		else:
+			motion.y += GRAVITY
+	else:
+		motion.y += GRAVITY
+		if is_on_floor() and Input.is_action_just_pressed("jump"):
+			jump()
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	motion = move_and_slide(motion, UP)
@@ -39,10 +50,14 @@ func take_damage():
 		else:
 			anim_effects.play("damage")
 
-func mount_ghost(ghost_type):
-	print('MONTOU!')
-	print(ghost_type)
-	pass
+func mount_ghost(ghost_type : String):
+	mounted = true
+	sprite_mount = get_node("Mount_" + ghost_type)
+	sprite_mount.show()
+	
+func unmount():
+	sprite_mount.hide()
+	mounted = false
 
 func die():
 	get_tree().quit()

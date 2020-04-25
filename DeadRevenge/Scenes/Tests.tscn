@@ -25,6 +25,12 @@ position = Vector2( 48, 224 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource( 1 )
 
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2( 48, 88 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+shape = SubResource( 1 )
+
 [node name="SpawnPoint" parent="." instance=ExtResource( 1 )]
 position = Vector2( 256, 192 )
 enemy = ExtResource( 6 )
@@ -38,5 +44,4 @@ position = Vector2( 256, 128 )
 enemy = ExtResource( 6 )
 
 [node name="SpawnObstacle" parent="." instance=ExtResource( 5 )]
-position = Vector2( 272, 200 )
-active = false
+position = Vector2( 256, 200 )
