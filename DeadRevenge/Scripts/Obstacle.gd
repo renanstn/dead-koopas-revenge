@@ -7,5 +7,4 @@ func _process(delta):
 	position += motion * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
-	print('bye')
 	queue_free()

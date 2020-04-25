@@ -11,6 +11,7 @@ onready var bone_spawn = $BoneSpawnPoint
 var motion : Vector2 = Vector2()
 var can_flu : bool = false
 var can_hit : bool = true
+var mounted : bool
 
 func _ready():
 	anim_player.play("walking")
@@ -37,6 +38,11 @@ func take_damage():
 			die()
 		else:
 			anim_effects.play("damage")
+
+func mount_ghost(ghost_type):
+	print('MONTOU!')
+	print(ghost_type)
+	pass
 
 func die():
 	get_tree().quit()

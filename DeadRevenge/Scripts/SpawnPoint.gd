@@ -1,15 +1,17 @@
 extends Position2D
 
-export (Array, PackedScene) var enemys
+export (PackedScene) var enemy
 export (bool) var active = true
 onready var timer : Timer = $SpawnTimer
+var types = ["A", "B", "C"]
 
 func _ready():
 	reload_timer()
 
 func _on_SpawnTimer_timeout():
 	if active:
-		var ghost = enemys[randi() % enemys.size()].instance()
+		var ghost = enemy.instance()
+		ghost.type = types[randi() % types.size()]
 		ghost.global_position = position
 		get_parent().add_child(ghost)
 		reload_timer()
