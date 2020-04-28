@@ -20,15 +20,11 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
+	motion.y += GRAVITY
 	if mounted:
-#		if Input.is_action_pressed("jump"):
 		if Input.is_action_just_pressed("jump"):
-			motion.y -= 400# FLY_POWER
-#			motion.y = clamp(motion.y, -V_SPEED_LIMIT, -FLY_POWER)
-		else:
-			motion.y += GRAVITY
+			jump()
 	else:
-		motion.y += GRAVITY
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			jump()
 	if Input.is_action_just_pressed("shoot"):
@@ -36,7 +32,7 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, UP)
 
 func jump():
-	motion.y -= JUMP_FORCE
+	motion.y = -JUMP_FORCE
 
 func shoot():
 	anim_player.play("attacking")
@@ -70,7 +66,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_parent().add_child(new_bone)
 
 func _on_HUD_jump():
-	jump()
+	if mounted:
+		jump()
+	if not mounted and is_on_floor():
+		jump()
 
 func _on_HUD_shoot():
 	shoot()

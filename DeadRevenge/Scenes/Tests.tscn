@@ -29,6 +29,7 @@ shape = SubResource( 1 )
 position = Vector2( 48, 88 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="SpawnPoint" parent="." instance=ExtResource( 1 )]
