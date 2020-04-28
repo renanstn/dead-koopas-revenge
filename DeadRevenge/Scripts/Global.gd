@@ -17,3 +17,9 @@ func decrease_spawn_time():
 	spawn_time_range[1] -= 1
 	spawn_time_range[0] = clamp(spawn_time_range[0], 0.3, 5)
 	spawn_time_range[1] = clamp(spawn_time_range[1], 1, 5)
+
+func reset():
+	score = 0
+	lives = 3
+	parallax_speed = 80
+	spawn_time_range = [1, 5]

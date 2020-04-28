@@ -10,6 +10,7 @@ export (PackedScene) var bone
 onready var anim_player = $AnimationPlayer
 onready var anim_effects = $AnimationEffects
 onready var bone_spawn = $BoneSpawnPoint
+onready var timer_vulnerable = $TimerVulnerable
 var motion : Vector2 = Vector2()
 var sprite_mount : Sprite
 var can_hit : bool = true
@@ -39,27 +40,32 @@ func shoot():
 
 func take_damage():
 	if can_hit:
-		can_hit = false
-		Global.lives -= 1
-		if Global.lives <= 0:
-			pass
-#			die()
+		if mounted:
+			unmount()
 		else:
-			anim_effects.play("damage")
+			can_hit = false
+			Global.lives -= 1
+			if Global.lives <= 0:
+				die()
+			else:
+				timer_vulnerable.start()
+				anim_effects.play("damage")
 
 func mount_ghost(ghost_type : String):
 	mounted = true
 	sprite_mount = get_node("Mount_" + ghost_type)
 	sprite_mount.show()
-	
+
 func unmount():
 	sprite_mount.hide()
 	mounted = false
 	can_hit = false
+	timer_vulnerable.start()
 	anim_effects.play("damage")
 
 func die():
-	get_tree().quit()
+	Global.reset()
+	get_tree().reload_current_scene()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "attacking":
@@ -78,5 +84,7 @@ func _on_HUD_shoot():
 	shoot()
 
 func _on_AnimationEffects_animation_finished(anim_name):
-	if anim_name == "damage":
-		can_hit = true
+	pass
+
+func _on_TimerVulnerable_timeout():
+	can_hit = true

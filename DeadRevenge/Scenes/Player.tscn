@@ -116,7 +116,12 @@ texture = ExtResource( 5 )
 vframes = 2
 hframes = 3
 frame = 1
+
+[node name="TimerVulnerable" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationEffects" to="." method="_on_AnimationEffects_animation_finished"]
 [connection signal="jump" from="CanvasLayer/HUD" to="." method="_on_HUD_jump"]
 [connection signal="shoot" from="CanvasLayer/HUD" to="." method="_on_HUD_shoot"]
+[connection signal="timeout" from="TimerVulnerable" to="." method="_on_TimerVulnerable_timeout"]
