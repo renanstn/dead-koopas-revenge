@@ -8,3 +8,11 @@ func _process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+
+func _on_Obstacle_body_entered(body):
+	if body.name == "Player":
+		if body.mounted:
+			body.unmount()
+		else:
+			body.take_damage()

@@ -42,7 +42,8 @@ func take_damage():
 		can_hit = false
 		Global.lives -= 1
 		if Global.lives <= 0:
-			die()
+			pass
+#			die()
 		else:
 			anim_effects.play("damage")
 
@@ -54,6 +55,8 @@ func mount_ghost(ghost_type : String):
 func unmount():
 	sprite_mount.hide()
 	mounted = false
+	can_hit = false
+	anim_effects.play("damage")
 
 func die():
 	get_tree().quit()

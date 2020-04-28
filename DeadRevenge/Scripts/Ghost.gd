@@ -29,10 +29,15 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Ghost_body_entered(body):
 	if body.name == "Player":
-		body.take_damage()
-		queue_free()
+		# Se o player já estiver montado em um ghost, desmonta
+		if body.mounted:
+			body.unmount()
+		else:
+			# Caso contrário, toma dano
+			body.take_damage()
+			queue_free()
 
 func _on_Head_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and not body.mounted and body.can_hit:
 		body.mount_ghost(type)
 		queue_free()

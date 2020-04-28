@@ -23,7 +23,6 @@ texture = ExtResource( 1 )
 flip_h = true
 vframes = 2
 hframes = 3
-frame = 4
 
 [node name="Sprite_B" type="Sprite" parent="."]
 visible = false
