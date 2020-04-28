@@ -10,11 +10,11 @@ Em desenvolvimento
 
 ## Regras
 
-Se você conseguir pular em cima de um fantasma, você monta nele, ai você pode voar da mesma forma que se voa no flappy bird, "pulando" várias vezes.
+- Se você conseguir pular em cima de um fantasma, você monta nele, ai você pode voar da mesma forma que se voa no flappy bird, "pulando" várias vezes.
 
-Se você for atingido enquanto está montado, vc perde o fantasma.
+- Se você for atingido enquanto está montado, vc perde o fantasma.
 
-Se você for atingido enquanto está a pé, você perde uma vida
+- Se você for atingido enquanto está a pé, você perde uma vida
 
 ## Este projeto envolve:
 
