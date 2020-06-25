@@ -24,7 +24,7 @@ Em desenvolvimento
 - Plataformas *one-way-collision*
 - Detecção de pulo sobre um inimigo
 - Efeito de "montar" em um inimigo
-- Comunicação com API externa (para salvar os records dos jogadores)
+- [TODO] Comunicação com API externa (para salvar os records dos jogadores)
 
 # Screenshots
 
